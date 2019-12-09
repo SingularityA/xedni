@@ -12,6 +12,8 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+import static ru.spbu.xedni.Helpers.utf8;
+
 public class SpbuIndexDemo {
     private final String indexPath = System.getProperty("user.dir") + "/src/main/resources/index";
     private final Directory directory;
@@ -24,7 +26,11 @@ public class SpbuIndexDemo {
             "спортивный клуб",
             "балтийские орланы",
             "переезд в гатчину",
-            "средний балл егэ"
+            "средний балл егэ",
+            "скандалы и расследования",
+            "пунк мероприятия",
+            "учеба по обмену",
+            "иностранные студенты"
     );
 
     public SpbuIndexDemo() throws IOException {
@@ -36,7 +42,7 @@ public class SpbuIndexDemo {
     @Test
     public void demo() {
         for (String query : queries) {
-            System.out.println("\nFor query: " + query);
+            System.out.println("\nFor query: " + utf8(query));
             showResults(index.search(query));
         }
     }
