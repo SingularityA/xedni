@@ -35,6 +35,7 @@ public class StoredIndex {
             stream.forEach(line -> {
                 String[] parts = line.split(",", 2);
                 add(parts[0], parts[1]);
+                System.out.println("Added doc: " + parts[0]);
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,8 +50,8 @@ public class StoredIndex {
         try {
             indexWriter = new IndexWriter(indexDirectory, indexWriterConfig);
 
-            document.add(new StringField(Fields.URL.getName(), utf8(name), Field.Store.YES));
-            document.add(new TextField(Fields.TEXT.getName(), utf8(contents), Field.Store.NO));
+            document.add(new StringField(Fields.URL.getName(), name, Field.Store.YES));
+            document.add(new TextField(Fields.TEXT.getName(), contents, Field.Store.NO));
 
             indexWriter.addDocument(document);
             indexWriter.close();
@@ -66,7 +67,7 @@ public class StoredIndex {
      * @return document or null if not found
      */
     public Document searchByUrl(String url) {
-        final Query query = new TermQuery(new Term(Fields.URL.getName(), utf8(url)));
+        final Query query = new TermQuery(new Term(Fields.URL.getName(), url));
         final List<Document> documents = search(query, 1);
         if (documents.isEmpty())
             return null;

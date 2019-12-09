@@ -49,7 +49,7 @@ public class SpbuIndexDemo {
         String url;
         for (Document doc : documents) {
             url = "https://spbu.ru/" + doc.get(Fields.URL.getName());
-            System.out.println();
+            System.out.println(url);
         }
     }
 }

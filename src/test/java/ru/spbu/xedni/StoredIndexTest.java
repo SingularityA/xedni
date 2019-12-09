@@ -34,8 +34,8 @@ public class StoredIndexTest {
 
     @Test
     public void testAdd() {
-        final String name = "doc/bla/1";
-        final String contents = "some long bla bla";
+        final String name = "бла/бла/1";
+        final String contents = "ла ла бла";
 
         Document document = index.searchByUrl(name);
         Assert.assertNull(document);
