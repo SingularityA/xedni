@@ -158,3 +158,8 @@ gradle-app.setting
 **/build/
 
 # End of https://www.gitignore.io/api/java,gradle,windows,intellij+all
+
+# resources #
+/src/test/resources/index/
+/src/main/resources/index/
+/src/main/resources/spbu_texts_clean.csv
